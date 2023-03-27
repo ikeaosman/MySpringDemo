@@ -17,10 +17,7 @@ public class PersonService { //Jeg har kopiet det fra PersonRepo klassen og skre
     public List<Person> fetchALl(){ //Den har fat i database og man skal lave en sql string her
         String sql = "SELECT * FROM person";
         RowMapper<Person> rowMapper = new BeanPropertyRowMapper<>(Person.class); // lister af objekter, af alle række i databasen
-
-        //Her kommer vores sql kode til at stå
-
-        return null;
+        return template.query(sql,rowMapper);
     }
     public void addPerson(Person p){
 
