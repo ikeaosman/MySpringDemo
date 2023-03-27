@@ -1,11 +1,16 @@
-package com.example.myspringdemo.Resopository;
+package com.example.myspringdemo.Service;
 
 import com.example.myspringdemo.Model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class PersonRepo {
-    //De 5 metoder. fetch people, addPerson, deleteperson, update person
+@Repository
+public class PersonService { //Jeg har kopiet det fra PersonRepo klassen og skrevet autowired
+    @Autowired
+    JdbcTemplate template;
 
     public List<Person> fetchALl(){
         //Her kommer vores sql kode til at stå
@@ -18,7 +23,7 @@ public class PersonRepo {
         return null;
     }
     public Boolean deletePerson(int id){
-     return null;
+        return null;
     }
     public void updatePerson(int id, Person p){
 
