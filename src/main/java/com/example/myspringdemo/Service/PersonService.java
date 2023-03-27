@@ -1,34 +1,28 @@
 package com.example.myspringdemo.Service;
 
 import com.example.myspringdemo.Model.Person;
+import com.example.myspringdemo.Resopository.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-@Repository
-public class PersonService { //Jeg har kopiet det fra PersonRepo klassen og skrevet autowired
+@Service
+public class PersonService {
     @Autowired
-    JdbcTemplate template;
-
-    public List<Person> fetchALl(){ //Den har fat i database og man skal lave en sql string her
-        String sql = "SELECT * FROM person";
-        RowMapper<Person> rowMapper = new BeanPropertyRowMapper<>(Person.class); // lister af objekter, af alle række i databasen
-        return template.query(sql,rowMapper);
+    PersonRepo personRepo;
+    public List<Person> fetchAll(){
+        return personRepo.fetchAll();
     }
     public void addPerson(Person p){
-
+        personRepo.addPerson(p);
     }
     public Person findPersonById(int id){
-        return null;
+        return personRepo.findPersonById(id);
     }
     public Boolean deletePerson(int id){
-        return null;
+        return personRepo.deletePerson(id);
     }
     public void updatePerson(int id, Person p){
-
+        personRepo.updatePerson(id, p);
     }
 }
