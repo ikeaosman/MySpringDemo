@@ -33,7 +33,7 @@ public class PersonRepo {
         return template.update(sql,id) > 0;
     }
     public void updatePerson(int id, Person p){
-        String sql = "UPDATE person SET first_name = ?, last_name = ?, WHERE id = ?";
+        String sql = "UPDATE person SET first_name = ?, last_name = ? WHERE id = ?";
         template.update(sql,p.getFirst_name(), p.getLast_name(), p.getId());
 
     }
